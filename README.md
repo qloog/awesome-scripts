@@ -36,25 +36,4 @@ do
    logger "${DBNAME} has been backup successful - $DATE" 
    /bin/sleep 5 
 done 
- 
- 
-HOST=10.1.2.22 
-FTP_USERNAME=db1 
-FTP_PASSWORD=db1_ritto 
- 
-cd ${BACKDIR}/${DATE} 
- 
-ftp -i -n -v << ! 
-open ${HOST} 
-user ${FTP_USERNAME} ${FTP_PASSWORD} 
-bin 
-cd ${FTPOLDDATE} 
-mdelete * 
-cd .. 
-rmdir ${FTPOLDDATE} 
-mkdir ${DATE} 
-cd ${DATE} 
-mput * 
-bye 
-! 
 ```
